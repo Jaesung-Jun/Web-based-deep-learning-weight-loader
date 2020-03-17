@@ -1,0 +1,20 @@
+ 
+
+{% extends "base_design.html" %}
+{% block content %} 
+
+{% if messages %}
+    {% for message in messages %}
+        <script>
+        alert('{{ message }}');
+        </script>
+    {% endfor %}
+{% endif %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <h1>Upload Success :)</h1>
+{% else %}
+    <h1>Upload Failed :(</h1>
+{% endif %}
+
+{% endblock %}

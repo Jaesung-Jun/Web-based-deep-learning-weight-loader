@@ -1,0 +1,57 @@
+
+
+
+
+<!-- https://bootsnipp.com/snippets/bxzmb -->
+
+
+
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--{% load static %}<link rel="stylesheet" href="{% static 'css/login_styles.css' %}">-->
+<!------ Include the above in your HEAD tag ---------->
+<body>
+    <div id="login">
+        <br>
+        <div class="container">
+            <br><br>
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+                            <h1 class="text-center text-info">Web-based Deep Learning Weight Loader</h1>
+                            <br>
+                            {% if form.errors %}
+                                <p class="text-center text-info">Username and Password didn't match. Please contact administrator.</p>
+                            {% endif %}
+                            {% if next %}
+                                {% if user.is_authenticated %}
+                                    <p>Your account doesn't have access to this page.</p>
+                                {% else %}
+                                    <p>Please login to see this page.</p>
+                                {% endif %}
+                            {% endif %}
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="{{ form.username.id_for_label }}" class="text-info">● Username :</label><br>
+                                <input type="text" name="{{ form.username.html_name }}" id="{{ form.username.id_for_label }}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.password.id_for_label }}" class="text-info">● Password :</label><br>
+                                <input type="password" name="{{ form.password.html_name }}" id="{{ form.password.id_for_label }}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="LOGIN">
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

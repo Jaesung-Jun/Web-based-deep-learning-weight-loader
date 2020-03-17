@@ -1,0 +1,39 @@
+
+
+
+
+<!--
+
+    https://bootsnipp.com/snippets/D7MvX
+
+-->
+
+
+
+  {% extends "base_design.html" %}
+  {% block content %}
+  
+  {% if messages %}
+      {% for message in messages %}
+          <script>
+          alert('{{ message }}');
+          </script>
+      {% endfor %}
+  {% endif %}
+
+  <div class="center">
+    <h1 style="text-align:center;">Web-based Deep Learning Weight Loader</h1>
+  </div>
+  <br><br>
+  <div class="center_green">
+    <form method="post" enctype="multipart/form-data" style="text-align: center;" novalidate>
+      <br>
+      {% csrf_token %}
+      {{ weight_form.as_p }}
+      {{ model_form.as_p }}
+      <br>
+      <button type="submit">Upload</button>
+    </form>
+    <br>
+  </div>
+  {% endblock %}
