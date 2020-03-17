@@ -1,6 +1,7 @@
 from django.db import models
-from django.conf import settings
 from django.contrib.auth.models import User
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 import os
 import uuid
 # Create your models here.
@@ -22,12 +23,15 @@ class WeightFile(models.Model):
     
     def filename(self):
         return os.path.basename(self.weight_file.name)
-
+        
     def delete(self, *args, **kwargs):
-        if os.path.isfile(self.weight_file.path):
-            os.remove(self.weight_file.path)
-        print(self.weight_file.path)
-        super(WeightFile, self).delete(*args, **kwargs)
+        self.weight_file.delete()
+        super().delete(*args, **kwargs)
+        
+@receiver(post_delete, sender=WeightFile)
+def weight_submission_delete(sender, instance, **kwargs):
+    instance.weight_file.delete(False) 
+
 
 class ModelFile(models.Model):
     def __str__(self):
@@ -42,9 +46,11 @@ class ModelFile(models.Model):
 
     def filename(self):
         return os.path.basename(self.model_file.name)
-
+        
     def delete(self, *args, **kwargs):
-        if os.path.isfile(self.model_file.path):
-            os.remove(self.model_file.path)
-        print(self.model_file.path)
-        super(ModelFile, self).delete(*args, **kwargs)
+        self.model_file.delete()
+        super().delete(*args, **kwargs)
+
+@receiver(post_delete, sender=ModelFile)
+def model_submission_delete(sender, instance, **kwargs):
+    instance.model_file.delete(False) 

@@ -5,16 +5,14 @@
 
 {% if messages %}
     {% for message in messages %}
+        {% if message.tags == "success" %}
+            <h1>Upload Success :)</h1>
+        {% else %}
+            <h1>Upload Failed :(</h1>
+        {% endif %}
         <script>
-        alert('{{ message }}');
+        alert('{{ message.message }}')
         </script>
     {% endfor %}
 {% endif %}
-
-{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-    <h1>Upload Success :)</h1>
-{% else %}
-    <h1>Upload Failed :(</h1>
-{% endif %}
-
 {% endblock %}

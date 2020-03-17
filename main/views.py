@@ -20,6 +20,7 @@ def upload_file(request):
     storage.used = True
 
     if request.method == 'POST':
+
         weight_file = WeightFile()
         model_file = ModelFile()
         
@@ -28,20 +29,27 @@ def upload_file(request):
 
         weight_file_form = WeightFileUploadForm(request.POST, request.FILES, instance=weight_file)
         model_file_form = ModelFileUploadForm(request.POST, request.FILES, instance=model_file)
+
         """
         if len(request.FILES['weight_file'].read()) > settings.MAX_UPLOAD_SIZE:
             messages.add_message(request, messages.ERROR, 'Please check max upload size')
         """
+
         if weight_file_form.is_valid() and model_file_form.is_valid():
+
             weight_file_form.save()
             model_file_form.save()
 
-            model_file_objects = ModelFile.objects.exclude(id=weight_file.id)
-            weight_file_objects = WeightFile.objects.exclude(id=model_file.id)
-            
-            print("Model file id = " + str(model_file_object.id) + " Deleted.")
-            print("Weight file id = " + str(weight_file_object.id) + " Deleted.")
-            
+            model_file_objects = ModelFile.objects.exclude(pk=model_file.pk)
+            weight_file_objects = WeightFile.objects.exclude(pk=weight_file.pk)
+
+            for model_files in model_file_objects:
+                print("Model file id : " + str(model_files.id) + " Deleted.")
+                model_files.delete()
+
+            for weight_files in weight_file_objects:
+                print("Weight file id : " + str(weight_files.id) + " Deleted.")
+                weight_files.delete()
             
             messages.add_message(request, messages.SUCCESS, 'Upload Success!')
             return HttpResponseRedirect(reverse('upload-success'))
