@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
+from django.urls import reverse
+
 import os
 import uuid
 # Create your models here.
@@ -27,7 +29,10 @@ class WeightFile(models.Model):
     def delete(self, *args, **kwargs):
         self.weight_file.delete()
         super().delete(*args, **kwargs)
-        
+
+    def get_absolute_url(self):
+        return reverse("weight-detail", kwargs={"pk": self.pk})
+
 @receiver(post_delete, sender=WeightFile)
 def weight_submission_delete(sender, instance, **kwargs):
     instance.weight_file.delete(False) 
@@ -51,6 +56,9 @@ class ModelFile(models.Model):
         self.model_file.delete()
         super().delete(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("model-detail", kwargs={"pk": self.pk})
+    
 @receiver(post_delete, sender=ModelFile)
 def model_submission_delete(sender, instance, **kwargs):
     instance.model_file.delete(False) 

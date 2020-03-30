@@ -2,11 +2,28 @@
 
 {% extends "base_design.html" %}
 {% block content %} 
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/loading.css' %}">
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == "success" %}
-            <h1>Upload Success :)</h1>
+            <!--<a>User : </a><a href="{{ uploader }}"></a>-->
+            <div class="loading-container">
+                <div class="loading"></div>
+                <div id="loading-text">
+                    Loading Model and weights :)
+                    <br>
+                    Do not refresh this page!
+                </div>
+                <div id="loading-text"></div>
+                <div id="name">
+                <b>Weight File : </b>
+                <a id="name" href="{{ weight_file.get_absolute_url }}" target="_blank">{{weight_file.weight_file}}</a>
+                <br>
+                <b>Model File : </b>
+                <a id="name" href="{{ model_file.get_absolute_url }}" target="_blank">{{model_file.model_file}}</a>
+                </div>
+            </div>
         {% else %}
             <h1>Upload Failed :(</h1>
         {% endif %}

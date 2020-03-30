@@ -12,11 +12,24 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
+★ Caution!
+    + In urlpattern dictionary, [path] function's first arguments are CANNOT same.
+    + ex)   path('<pk>', views.weightDetailView, name='weight-detail'),
+    +       path('<pk>', views.modelDetailView, name='model-detail'),
+    + this example is error.
+
 """
 from django.urls import path
+from django.conf.urls import url
 from . import views
 
+
+
 urlpatterns = [
-    path('', views.upload_file, name='upload'),
-    path('success/', views.upload_success, name='upload-success'),
+    path('', views.uploadFile, name='upload'),
+    path('weight/<pk>', views.weightDetailView, name='weight-detail'),
+    path('model/<pk>', views.modelDetailView, name='model-detail'),
+    path('success/<model_pk>/<weight_pk>', views.uploadSuccess, name='upload-success'),
+    #url(r'^success/(?P<uploader>\w+)/$', views.upload_success, name='upload-success'),
 ]
