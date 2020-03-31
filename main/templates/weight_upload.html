@@ -1,15 +1,8 @@
-
-
-
-
 <!--
 
     https://bootsnipp.com/snippets/D7MvX
 
 -->
-
-
-
   {% extends "base_design.html" %}
   {% block content %}
   
@@ -23,14 +16,15 @@
 
   <div class="center">
     <h1 style="text-align:center;">Web-based Deep Learning Weight Loader</h1>
+    <br><br>
+    <a>Model file extension : .json<br>Weight file extension : .h5</a>
   </div>
-  <br><br>
   <div class="center_green">
     <form method="post" enctype="multipart/form-data" style="text-align: center;" novalidate>
       <br>
       {% csrf_token %}
-      {{ weight_form.as_p }}
       {{ model_form.as_p }}
+      {{ weight_form.as_p }}
       <br>
       <button type="submit">Upload</button>
     </form>

@@ -16,6 +16,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 import os
 import main.keras_loader as kl
+from main.logger import log
+
+from multiprocessing import Pool
 
 def weightDetailView(request, pk):
     weight_file = get_object_or_404(WeightFile, pk=pk)
@@ -42,11 +45,6 @@ def uploadFile(request):
         weight_file_form = WeightFileUploadForm(request.POST, request.FILES, instance=weight_file)
         model_file_form = ModelFileUploadForm(request.POST, request.FILES, instance=model_file)
 
-        """
-        if len(request.FILES['weight_file'].read()) > settings.MAX_UPLOAD_SIZE:
-            messages.add_message(request, messages.ERROR, 'Please check max upload size')
-        """
-
         if weight_file_form.is_valid() and model_file_form.is_valid():
 
             weight_file_form.save()
@@ -54,25 +52,31 @@ def uploadFile(request):
 
             model_file_objects = ModelFile.objects.exclude(pk=model_file.pk)
             weight_file_objects = WeightFile.objects.exclude(pk=weight_file.pk)
-            print("Uploader = ", str(weight_file.uploader))
-            for model_files in model_file_objects: 
-                print("Model file id : {0}(File : {1}) Deleted.".format(str(model_file.id), model_file.model_file))
+            
+            print("Uploader : ", str(weight_file.uploader))
+            log(weight_file.uploader, "Weight file : {0} successfully uploaded".format(weight_file.weight_file))
+            log(model_file.uploader, "Model file : {0} successfully uploaded".format(model_file.model_file))
+            for model_files in model_file_objects:
+                log(weight_file.uploader, "Weight file id : {0}(File : {1}) Deleted.".format(str(model_files.id), model_files.model_file))
                 model_files.delete()
 
             for weight_files in weight_file_objects:
-                print("Weight file id : {0}(File : {1}) Deleted.".format(str(weight_files.id), weight_file.weight_file))
+                log(weight_file.uploader, "Weight file id : {0}(File : {1}) Deleted.".format(str(weight_files.id), weight_files.weight_file))
                 weight_files.delete()
 
             messages.add_message(request, messages.SUCCESS, 'Upload Success!')
-
+            
             return HttpResponseRedirect(reverse('upload-success', args=(str(model_file.pk), str(weight_file.pk))))
 
         elif not model_file_form.is_valid() and not weight_file_form.is_valid():
             messages.add_message(request, messages.ERROR, 'Weight File and Model File Upload Failed')
+            log(weight_file.uploader,'Weight file and Model file Upload Failed', important=True)
         elif not model_file_form.is_valid():
-            messages.add_message(request, messages.ERROR, 'Model File Upload Failed')
+            messages.add_message(request, messages.ERROR, 'Model file Upload Failed')
+            log(weight_file.uploader,'Model file Upload Failed', important=True)
         elif not weight_file_form.is_valid():
-            messages.add_message(request, messages.ERROR, 'Weight File Upload Failed')
+            messages.add_message(request, messages.ERROR, 'Weight file Upload Failed')
+            log(weight_file.uploader,'Weight file Upload Failed', important=True)
 
     weight_form = WeightFileUploadForm()
     model_form = ModelFileUploadForm()
@@ -93,5 +97,19 @@ def uploadSuccess(request, model_pk, weight_pk):
         'model_file' : model_file,
         'weight_file' : weight_file,
     }
-    kl.load(str(model_file.model_file), str(weight_file.weight_file))
-    return render(request, 'upload_success.html', context)
+
+    err = kl.load(str(model_file.model_file), str(weight_file.weight_file))
+    
+    if err == 1:
+        log(request.user, "Model file : {0} fail to load".format(str(model_file.model_file)), important=True)
+        messages.add_message(request, messages.ERROR, 'Model file fail to load/nModel file extension : .json/nWeight file extension : .h5')
+        return HttpResponseRedirect(reverse('upload'))
+    elif err == 2:
+        log(request.user, "Weight file : {0} fail to load".format(str(weight_file.weight_file)), important=True)  
+        messages.add_message(request, messages.ERROR, 'Weight file fail to load/nModel file extension : .json/nWeight file extension : .h5')  
+        return HttpResponseRedirect(reverse('upload'))
+
+    else:
+        log(request.user, "Model file : {0}, Weight file : {1} successfully loaded".format(str(model_file.model_file), str(weight_file.weight_file)))
+        return render(request, 'upload_success.html', context)
+    

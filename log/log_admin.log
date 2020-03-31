@@ -1,0 +1,63 @@
+[2020-04-01 04:04:11.261334] Weight file : weight_upload/model_jZKimb5.h5 successfully uploaded
+[2020-04-01 04:04:11.262330] Model file : model_upload/model_fvQT3FW.json successfully uploaded
+[2020-04-01 04:04:11.264331] Model file id : ec7de307-aa16-4c73-b27e-8bdaf884a0f2(File : model_upload/model_fvQT3FW.json) Deleted.
+[2020-04-01 04:04:11.284272] Weight file id : 6520c7e3-dde7-4dd8-b867-fddc38a55c53(File : weight_upload/model_jZKimb5.h5) Deleted.
+[2020-04-01 04:15:16.168678] Weight file : weight_upload/model.h5 successfully uploaded
+[2020-04-01 04:15:16.169665] Model file : model_upload/model.json successfully uploaded
+[2020-04-01 04:15:16.172658] Model file id : 351e5462-192c-487c-ad4c-01e227266052(File : model_upload/model.json) Deleted.
+[2020-04-01 04:15:16.191610] Weight file id : e5880176-9cef-4aa5-b72d-50446817354e(File : weight_upload/model.h5) Deleted.
+[2020-04-01 04:15:16.429972] Model file : model_upload/model.json, Weight file : weight_upload/model.h5 successfully loaded
+[2020-04-01 04:15:51.918402] Weight file : weight_upload/CNN.py successfully uploaded
+[2020-04-01 04:15:51.919378] Model file : model_upload/model_fJmNmTd.json successfully uploaded
+[2020-04-01 04:15:51.921373] Model file id : 0debc90e-ce5f-4a15-b795-04b754b31db5(File : model_upload/model_fJmNmTd.json) Deleted.
+[2020-04-01 04:15:51.938358] Weight file id : a3b870eb-cb40-4e96-81dc-a77308f5139e(File : weight_upload/CNN.py) Deleted.
+¡Ú [2020-04-01 04:15:52.042687] Model file : model_upload/model_fJmNmTd.json fail to load
+[2020-04-01 04:18:21.743771] Weight file : weight_upload/CNN_vBJBr5C.py successfully uploaded
+[2020-04-01 04:18:21.744786] Model file : model_upload/model.json successfully uploaded
+[2020-04-01 04:18:54.629422] Weight file : weight_upload/CNN_NcU1Fnr.py successfully uploaded
+[2020-04-01 04:18:54.631421] Model file : model_upload/model_zXxpzDG.json successfully uploaded
+[2020-04-01 04:18:54.635406] Model file : <QuerySet [<ModelFile: model_fJmNmTd.json>, <ModelFile: model.json>]> Deleted.
+[2020-04-01 04:19:55.463133] Weight file : weight_upload/CNN_wBzInXq.py successfully uploaded
+[2020-04-01 04:19:55.464117] Model file : model_upload/model_s4U3hk5.json successfully uploaded
+[2020-04-01 04:19:55.466113] Weight file id : ddade73e-30ac-4d10-8979-78c85513e3e6(File : model_upload/model.json) Deleted.
+[2020-04-01 04:19:55.485974] Weight file id : a94e7dae-5bda-4f78-bcc7-120741696684(File : model_upload/model_zXxpzDG.json) Deleted.
+[2020-04-01 04:19:55.504922] Weight file id : 7077ab18-6a37-409a-8bb0-366ea2163baf(File : weight_upload/CNN.py) Deleted.
+[2020-04-01 04:19:55.519896] Weight file id : a6b5a7d4-11cc-44c0-b393-d47774828c44(File : weight_upload/CNN_vBJBr5C.py) Deleted.
+[2020-04-01 04:19:55.535842] Weight file id : 5ad113da-0f4e-43cf-8df6-2f8a53c83102(File : weight_upload/CNN_NcU1Fnr.py) Deleted.
+¡Ú [2020-04-01 04:19:55.674469] Model file : model_upload/model_s4U3hk5.json fail to load
+¡Ú [2020-04-01 04:20:42.880654] Model file : model_upload/model_s4U3hk5.json fail to load
+[2020-04-01 04:22:09.246449] Weight file : weight_upload/model.h5 successfully uploaded
+[2020-04-01 04:22:09.246449] Model file : model_upload/model.json successfully uploaded
+[2020-04-01 04:22:09.248487] Weight file id : 54430f51-6129-4264-9063-985dbaa0231c(File : model_upload/model_s4U3hk5.json) Deleted.
+[2020-04-01 04:22:09.270411] Weight file id : 84c61aa8-38a9-4ec4-b602-e3413d00ba27(File : weight_upload/CNN_wBzInXq.py) Deleted.
+[2020-04-01 04:22:09.493991] Model file : model_upload/model.json, Weight file : weight_upload/model.h5 successfully loaded
+[2020-04-01 04:33:20.142753] Weight file : weight_upload/model_Oy3ZxQ4.h5 successfully uploaded
+[2020-04-01 04:33:20.143751] Model file : model_upload/CNN.py successfully uploaded
+[2020-04-01 04:33:20.144780] Weight file id : d38eba0f-bb59-4a1d-9b0d-d4fef4d91a0f(File : model_upload/model.json) Deleted.
+[2020-04-01 04:33:20.160731] Weight file id : 855965e4-62f5-43d3-844d-b4159b1da0a6(File : weight_upload/model.h5) Deleted.
+¡Ú [2020-04-01 04:33:20.213567] Weight file : weight_upload/model_Oy3ZxQ4.h5 fail to load
+¡Ú [2020-04-01 04:33:23.996961] Weight file : weight_upload/model_Oy3ZxQ4.h5 fail to load
+¡Ú [2020-04-01 04:33:25.812323] Weight file : weight_upload/model_Oy3ZxQ4.h5 fail to load
+¡Ú [2020-04-01 04:33:32.423072] Weight file : weight_upload/model_Oy3ZxQ4.h5 fail to load
+¡Ú [2020-04-01 04:34:30.919495] Weight file : weight_upload/model_Oy3ZxQ4.h5 fail to load
+[2020-04-01 04:34:36.757864] Weight file : weight_upload/model.json successfully uploaded
+[2020-04-01 04:34:36.758861] Model file : model_upload/CNN_62DYmgJ.py successfully uploaded
+[2020-04-01 04:34:36.759859] Weight file id : a9a7f0a6-96de-495d-93a9-c988d7397731(File : model_upload/CNN.py) Deleted.
+[2020-04-01 04:34:36.777812] Weight file id : 2860ddc4-1dc4-4f4e-8db2-79c74bf1fe68(File : weight_upload/model_Oy3ZxQ4.h5) Deleted.
+¡Ú [2020-04-01 04:34:36.828197] Weight file : weight_upload/model.json fail to load
+[2020-04-01 04:37:36.086338] Weight file : weight_upload/model_Qz7HtPo.json successfully uploaded
+[2020-04-01 04:37:36.086338] Model file : model_upload/model.h5 successfully uploaded
+[2020-04-01 04:37:36.088333] Weight file id : 63e166e9-bca0-4310-8a55-941582a8dad1(File : model_upload/CNN_62DYmgJ.py) Deleted.
+[2020-04-01 04:37:36.103315] Weight file id : 2356e92d-e200-4358-af30-06963468869b(File : weight_upload/model.json) Deleted.
+¡Ú [2020-04-01 04:37:36.150166] Weight file : weight_upload/model_Qz7HtPo.json fail to load
+¡Ú [2020-04-01 04:42:59.220005] Weight file and Model file Upload Failed
+¡Ú [2020-04-01 04:43:00.623514] Weight file and Model file Upload Failed
+¡Ú [2020-04-01 04:43:02.049085] Weight file and Model file Upload Failed
+¡Ú [2020-04-01 04:43:06.352484] Weight file and Model file Upload Failed
+¡Ú [2020-04-01 04:43:07.887141] Weight file and Model file Upload Failed
+¡Ú [2020-04-01 04:43:09.729238] Weight file and Model file Upload Failed
+[2020-04-01 04:43:18.736435] Weight file : weight_upload/model.h5 successfully uploaded
+[2020-04-01 04:43:18.737431] Model file : model_upload/model.json successfully uploaded
+[2020-04-01 04:43:18.740424] Weight file id : 67515bb1-788a-4800-8c13-78f382a2d8eb(File : model_upload/model.h5) Deleted.
+[2020-04-01 04:43:18.757378] Weight file id : d84a32ba-65bc-4022-906c-7a9c486ebc46(File : weight_upload/model_Qz7HtPo.json) Deleted.
+[2020-04-01 04:43:19.001345] Model file : model_upload/model.json, Weight file : weight_upload/model.h5 successfully loaded
