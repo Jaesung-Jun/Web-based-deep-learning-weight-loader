@@ -8,23 +8,23 @@
     {% for message in messages %}
         {% if message.tags == "success" %}
             <!--<a>User : </a><a href="{{ uploader }}"></a>-->
-            <div class="loading-container">
-                <div class="loading"></div>
-                <div id="loading-text">
-                    Loading Model and weights :)
-                    <br>
-                    Do not refresh this page!
-                    <br><br>
-
-                </div>
-                <div id="name">
+            <div class="content">
                 <b>Weight File : </b>
                 <a id="name" href="{{ weight_file.get_absolute_url }}" target="_blank">{{weight_file.weight_file}}</a>
                 <br>
                 <b>Model File : </b>
                 <a id="name" href="{{ model_file.get_absolute_url }}" target="_blank">{{model_file.model_file}}</a>
-                </div>
             </div>
+
+            <div class="loader-wrapper">
+                <span class="loader"><span class="loader-inner"></span></span>
+            </div>
+
+            <script>
+                $(window).on("load",function(){
+                $(".loader-wrapper").fadeOut("slow");
+                });
+            </script>
         {% endif %}
         <script>
         alert('{{ message.message }}')

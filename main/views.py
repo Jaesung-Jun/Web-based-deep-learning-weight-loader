@@ -99,14 +99,15 @@ def uploadSuccess(request, model_pk, weight_pk):
     }
 
     err = kl.load(str(model_file.model_file), str(weight_file.weight_file))
-    
+    #Some Errors in this code
+    # err value is 1 when weight file fail to load also.
     if err == 1:
         log(request.user, "Model file : {0} fail to load".format(str(model_file.model_file)), important=True)
-        messages.add_message(request, messages.ERROR, 'Model file fail to load/nModel file extension : .json/nWeight file extension : .h5')
+        messages.add_message(request, messages.ERROR, 'Model file fail to load')
         return HttpResponseRedirect(reverse('upload'))
     elif err == 2:
         log(request.user, "Weight file : {0} fail to load".format(str(weight_file.weight_file)), important=True)  
-        messages.add_message(request, messages.ERROR, 'Weight file fail to load/nModel file extension : .json/nWeight file extension : .h5')  
+        messages.add_message(request, messages.ERROR, 'Weight file fail to load')  
         return HttpResponseRedirect(reverse('upload'))
 
     else:
